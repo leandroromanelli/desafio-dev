@@ -1,0 +1,44 @@
+<input #fileUp class="file-upload" type="file" (change)="upload($event)" />
+<button (click)="send()" *ngIf="hasData">Send</button>
+
+<br/>
+
+<p>{{ message }}</p>
+
+<br/>
+
+<div class="grid" *ngIf="cnabList.length">
+  <div class="card" *ngFor="let item of cnabList">
+    <div class="card-header" [ngClass]="item.symbol === '-' ? 'negative' : 'positive'">{{item.symbol}}</div>
+    <div class="card-body">
+      <div class="card-content">
+        <div class="title">Tipo:&nbsp;</div>
+        <div class="content">{{ item.type }}</div>
+      </div>
+      <div class="card-content">
+        <div class="title">Data:&nbsp;</div>
+        <div class="content">{{ localeDate(item.date) }}</div>
+      </div>
+      <div class="card-content">
+        <div class="title">Valor:&nbsp;</div>
+        <div class="content">{{ localeCurrency(item.value) }}</div>
+      </div>
+      <div class="card-content">
+        <div class="title">CPF:&nbsp;</div>
+        <div class="content">{{ localeDocument(item.document) }}</div>
+      </div>
+      <div class="card-content">
+        <div class="title">Cartão:&nbsp;</div>
+        <div class="content">{{ localeCard(item.card) }}</div>
+      </div>
+      <div class="card-content">
+        <div class="title">Dono da Loja:&nbsp;</div>
+        <div class="content">{{ item.storeOwner }}</div>
+      </div>
+      <div class="card-content">
+        <div class="title">Nome da Loja:&nbsp;</div>
+        <div class="content">{{ item.storeName }}</div>
+      </div>
+    </div>
+  </div>
+</div>
